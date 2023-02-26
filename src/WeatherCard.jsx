@@ -1,6 +1,6 @@
-import { Typography, Input, Paper, IconButton } from "@mui/material";
+import { Typography, Input, IconButton } from "@mui/material";
 import { Box } from "@mui/system";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import AirOutlinedIcon from "@mui/icons-material/AirOutlined";
 import WaterOutlinedIcon from "@mui/icons-material/WaterOutlined";
@@ -36,7 +36,6 @@ const WeatherCard = () => {
       const finalData = await weatherResponse.json();
       setWeather(finalData);
 
-      console.log(finalData);
       switch (finalData.weather[0].main) {
         case "Clear":
           setImage("clear.png");
@@ -53,7 +52,7 @@ const WeatherCard = () => {
         case "Drizzle":
           setImage("rain.png");
           break;
-        case "Snowy":
+        case "Snow":
           setImage("snow.png");
           break;
         default:
@@ -112,7 +111,7 @@ const WeatherCard = () => {
               {/* IMAGE */}
 
               <Box display="flex" justifyContent="center" p="1.5rem 0">
-                <img alt={image} src={`images${image}`} />
+                <img alt={image} src={`images/${image}`} width="250px" />
               </Box>
 
               {/* TEMP */}
@@ -123,7 +122,7 @@ const WeatherCard = () => {
               </Box>
 
               {/* KIND OF WEATHER */}
-              <Box display="flex" justifyContent="center">
+              <Box display="flex" justifyContent="center" pb="3rem">
                 <Typography variant="h6" fontWeight="light">
                   {weather.weather[0].main}
                 </Typography>
